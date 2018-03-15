@@ -1,0 +1,9 @@
+source 'http://rubygems.org' do
+	gem 'cucumber'
+	gem 'rspec'
+	gem 'sqlite3'
+	gem 'pry'
+	gem 'json_spec'
+	gem 'process-helper'
+	gem 'rest-client'
+end

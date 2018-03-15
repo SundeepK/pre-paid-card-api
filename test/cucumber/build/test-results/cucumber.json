@@ -1,0 +1,2448 @@
+[
+  {
+    "uri": "features/cards.feature",
+    "id": "",
+    "keyword": "Feature",
+    "name": "",
+    "description": "  AS a consumer of a pre paid card\n  I want to interact with card api\n  SO that I can make cards, deposit money and fetch balance",
+    "line": 1,
+    "elements": [
+      {
+        "id": ";api-creates-new-card",
+        "keyword": "Scenario",
+        "name": "Api creates new card",
+        "description": "",
+        "line": 6,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "When ",
+            "name": "I POST cards:",
+            "line": 7,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 208682246
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 383895
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 11,
+            "doc_string": {
+              "value": " {\n    \"cardId\": 1,\n    \"firstName\": \"Bob\",\n    \"lastName\": \"John\"\n }",
+              "content_type": "",
+              "line": 12
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2562100
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8579412
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16968
+            }
+          }
+        ]
+      },
+      {
+        "id": ";api-doesn't-create-duplicate-cards",
+        "keyword": "Scenario",
+        "name": "Api doesn't create duplicate cards",
+        "description": "",
+        "line": 20,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "When ",
+            "name": "I POST cards:",
+            "line": 21,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4882888
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 24,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47812
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 25,
+            "doc_string": {
+              "value": " {\n    \"cardId\": 1,\n    \"firstName\": \"Bob\",\n    \"lastName\": \"John\"\n }",
+              "content_type": "",
+              "line": 26
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 129656
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST cards:",
+            "line": 33,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8876464
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"400\"",
+            "line": 36,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30223
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 37,
+            "doc_string": {
+              "value": " {\n    \"error\": \"Card already exists.\"\n }",
+              "content_type": "",
+              "line": 38
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 80113
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3126380
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12895
+            }
+          }
+        ]
+      },
+      {
+        "id": ";api-allows-deposits",
+        "keyword": "Scenario",
+        "name": "Api allows deposits",
+        "description": "",
+        "line": 44,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "When ",
+            "name": "I POST cards:",
+            "line": 45,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5663614
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 48,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34427
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET cards/1/balance",
+            "line": 49,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6931944
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 50,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33449
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 51,
+            "doc_string": {
+              "value": " {\n    \"cardId\": 1,\n    \"amount\": 0.0,\n    \"nonce\": 0\n }",
+              "content_type": "",
+              "line": 52
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 100771
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST cards/deposit:",
+            "line": 59,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "10.50",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14232588
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 62,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30985
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 63,
+            "doc_string": {
+              "value": " {\n    \"amount\": 10.5,\n    \"cardId\": 1,\n    \"transactionId\": 1,\n    \"type\": \"DEPOSIT\"\n }",
+              "content_type": "",
+              "line": 64
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 91748
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST cards/deposit:",
+            "line": 72,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "0.49",
+                  "1"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4323324
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 75,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37879
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 76,
+            "doc_string": {
+              "value": " {\n    \"amount\": 0.49,\n    \"cardId\": 1,\n    \"transactionId\": 2,\n    \"type\": \"DEPOSIT\"\n }",
+              "content_type": "",
+              "line": 77
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 129791
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET cards/1/balance",
+            "line": 85,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3041580
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 86,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48042
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 87,
+            "doc_string": {
+              "value": " {\n    \"cardId\": 1,\n    \"amount\": 10.99,\n    \"nonce\": 2\n }",
+              "content_type": "",
+              "line": 88
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 109739
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3785048
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15180
+            }
+          }
+        ]
+      },
+      {
+        "id": ";api-returns-error-on-incorrect-nonce-on-deposit",
+        "keyword": "Scenario",
+        "name": "Api returns error on incorrect nonce on deposit",
+        "description": "",
+        "line": 96,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "When ",
+            "name": "I POST cards:",
+            "line": 97,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5474626
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 100,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 131445
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST cards/deposit:",
+            "line": 101,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "20.00",
+                  "1"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9893214
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"400\"",
+            "line": 104,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 40536
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 105,
+            "doc_string": {
+              "value": "{\n  \"error\": \"Invalid nonce supplied\"\n}",
+              "content_type": "",
+              "line": 106
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 112749
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4947505
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18334
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "uri": "features/merchants.feature",
+    "id": "",
+    "keyword": "Feature",
+    "name": "",
+    "description": "  AS a consumer of a pre paid card\n  I want to interact with merchant api\n  SO that I can make merchants, get merchants and fetch balance",
+    "line": 1,
+    "elements": [
+      {
+        "id": ";api-creates-new-merchant",
+        "keyword": "Scenario",
+        "name": "Api creates new merchant",
+        "description": "",
+        "line": 6,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "When ",
+            "name": "I POST merchants:",
+            "line": 7,
+            "rows": [
+              {
+                "cells": [
+                  "name"
+                ]
+              },
+              {
+                "cells": [
+                  "amazon"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15318993
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35222
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 11,
+            "doc_string": {
+              "value": " {\n    \"merchantId\": 1,\n    \"name\": \"amazon\"\n }",
+              "content_type": "",
+              "line": 12
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 85256
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET merchants/1/balance",
+            "line": 18,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4792664
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 19,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28523
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 20,
+            "doc_string": {
+              "value": " {\n    \"merchantId\": 1,\n    \"amount\": 0.0,\n    \"nonce\": 0\n }",
+              "content_type": "",
+              "line": 21
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82208
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2938451
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15655
+            }
+          }
+        ]
+      },
+      {
+        "id": ";api-returns-not-found-for-unknown-merchant",
+        "keyword": "Scenario",
+        "name": "Api returns not found for unknown merchant",
+        "description": "",
+        "line": 29,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "When ",
+            "name": "I GET merchants/1/balance",
+            "line": 30,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5548507
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"404\"",
+            "line": 31,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 41441
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4277725
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29077
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "uri": "features/payments.feature",
+    "id": "",
+    "keyword": "Feature",
+    "name": "",
+    "description": "  AS a consumer of a pre paid card\n  I want to interact with payment api\n  SO that users can make purchases",
+    "line": 1,
+    "elements": [
+      {
+        "id": ";api-allows-payments-and-withdraws-for-merchants",
+        "keyword": "Scenario",
+        "name": "Api allows payments and withdraws for merchants",
+        "description": "",
+        "line": 6,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I POST cards:",
+            "line": 7,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5751865
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST cards/deposit:",
+            "line": 10,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "10.50",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4608326
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST merchants:",
+            "line": 13,
+            "rows": [
+              {
+                "cells": [
+                  "name"
+                ]
+              },
+              {
+                "cells": [
+                  "amazon"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3559813
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST payments:",
+            "line": 16,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce",
+                  "reason"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "10",
+                  "1",
+                  "Rubber duck"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15046949
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 19,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35983
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 20,
+            "doc_string": {
+              "value": " {\n    \"amount\": 10.0,\n    \"cardId\": 1,\n    \"merchantId\": 1,\n    \"transactionId\": 2,\n    \"reason\": \"Rubber duck\",\n    \"type\": \"PAYMENT\"\n }",
+              "content_type": "",
+              "line": 21
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 119535
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET earmarked/cardId/1/merchant/1",
+            "line": 31,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3839372
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 32,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30776
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 33,
+            "doc_string": {
+              "value": " {\n    \"amount\": 10.0,\n    \"cardId\": 1,\n    \"merchantId\": 1\n }",
+              "content_type": "",
+              "line": 34
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 86894
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST withdraws:",
+            "line": 41,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "10",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5542970
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 44,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 53882
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 45,
+            "doc_string": {
+              "value": " {\n    \"amount\": 10.0,\n    \"merchantId\": 1,\n    \"transactionId\": 3,\n    \"type\": \"WITHDRAW\"\n }",
+              "content_type": "",
+              "line": 46
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 96043
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET merchants/1/balance",
+            "line": 54,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2487117
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 55,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30383
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 56,
+            "doc_string": {
+              "value": " {\n    \"amount\": 10.0,\n    \"merchantId\": 1,\n    \"nonce\": 1\n }",
+              "content_type": "",
+              "line": 57
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 117824
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2728132
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13202
+            }
+          }
+        ]
+      },
+      {
+        "id": ";api-forbids-withdrawing-more-than-exists-in-ear-marked-balance",
+        "keyword": "Scenario",
+        "name": "Api forbids withdrawing more than exists in ear marked balance",
+        "description": "",
+        "line": 65,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I POST cards:",
+            "line": 66,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4977276
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST cards/deposit:",
+            "line": 69,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "10.50",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4047615
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST merchants:",
+            "line": 72,
+            "rows": [
+              {
+                "cells": [
+                  "name"
+                ]
+              },
+              {
+                "cells": [
+                  "amazon"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4068056
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST payments:",
+            "line": 75,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce",
+                  "reason"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "10",
+                  "1",
+                  "Rubber duck"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5190455
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST withdraws:",
+            "line": 78,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "100",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3141413
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"400\"",
+            "line": 81,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35324
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 82,
+            "doc_string": {
+              "value": "{\n  \"error\": \"Payment results in negative ear mark balance.\"\n}",
+              "content_type": "",
+              "line": 83
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 78859
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2911662
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12468
+            }
+          }
+        ]
+      },
+      {
+        "id": ";api-allows-partial-withdraws",
+        "keyword": "Scenario",
+        "name": "Api allows partial withdraws",
+        "description": "",
+        "line": 89,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I POST cards:",
+            "line": 90,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4127372
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST cards/deposit:",
+            "line": 93,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "500",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4517521
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST merchants:",
+            "line": 96,
+            "rows": [
+              {
+                "cells": [
+                  "name"
+                ]
+              },
+              {
+                "cells": [
+                  "amazon"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4375699
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST payments:",
+            "line": 99,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce",
+                  "reason"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "400",
+                  "1",
+                  "TV"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5328583
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST withdraws:",
+            "line": 102,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "300",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4751916
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 105,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34647
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET merchants/1/balance",
+            "line": 106,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2291382
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 107,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32902
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 108,
+            "doc_string": {
+              "value": " {\n    \"amount\": 300.0,\n    \"merchantId\": 1,\n    \"nonce\": 1\n }",
+              "content_type": "",
+              "line": 109
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 97730
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET earmarked/cardId/1/merchant/1",
+            "line": 116,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2981988
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 117,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31483
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 118,
+            "doc_string": {
+              "value": " {\n    \"amount\": 100.0,\n    \"cardId\": 1,\n    \"merchantId\": 1\n }",
+              "content_type": "",
+              "line": 119
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 91283
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3518392
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15308
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "uri": "features/refunds.feature",
+    "id": "",
+    "keyword": "Feature",
+    "name": "",
+    "description": "  AS a consumer of a pre paid card\n  I want to interact with refunds api\n  SO that merchants can refund customers",
+    "line": 1,
+    "elements": [
+      {
+        "id": ";api-allows-refunds",
+        "keyword": "Scenario",
+        "name": "Api allows refunds",
+        "description": "",
+        "line": 6,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "When ",
+            "name": "I POST cards:",
+            "line": 7,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4420806
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST cards/deposit:",
+            "line": 10,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "500",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3661937
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST merchants:",
+            "line": 13,
+            "rows": [
+              {
+                "cells": [
+                  "name"
+                ]
+              },
+              {
+                "cells": [
+                  "amazon"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3192845
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST payments:",
+            "line": 16,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce",
+                  "reason"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "400",
+                  "1",
+                  "TV"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4982519
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST refunds:",
+            "line": 19,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "300",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5060686
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 22,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47021
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET cards/1/balance",
+            "line": 23,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2685711
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 24,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36791
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 25,
+            "doc_string": {
+              "value": " {\n    \"amount\": 400.0,\n    \"cardId\": 1,\n    \"nonce\": 3\n }",
+              "content_type": "",
+              "line": 26
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 128564
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET earmarked/cardId/1/merchant/1",
+            "line": 33,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2659050
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 34,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35154
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 35,
+            "doc_string": {
+              "value": " {\n    \"amount\": 100.0,\n    \"cardId\": 1,\n    \"merchantId\": 1\n }",
+              "content_type": "",
+              "line": 36
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 119009
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2730674
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 15224
+            }
+          }
+        ]
+      },
+      {
+        "id": ";api-forbids-refunding-too-much",
+        "keyword": "Scenario",
+        "name": "Api forbids refunding too much",
+        "description": "",
+        "line": 44,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "When ",
+            "name": "I POST cards:",
+            "line": 45,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4254772
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST cards/deposit:",
+            "line": 48,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "100",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4630600
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST merchants:",
+            "line": 51,
+            "rows": [
+              {
+                "cells": [
+                  "name"
+                ]
+              },
+              {
+                "cells": [
+                  "amazon"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3396442
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST payments:",
+            "line": 54,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce",
+                  "reason"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "50",
+                  "1",
+                  "TV"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6047238
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I POST refunds:",
+            "line": 57,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "1",
+                  "200",
+                  "2"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3256624
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"400\"",
+            "line": 60,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48187
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 61,
+            "doc_string": {
+              "value": " {\n    \"error\": \"Payment results in negative ear mark balance.\"\n }",
+              "content_type": "",
+              "line": 62
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 116235
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2536729
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 18594
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "uri": "features/transactions.feature",
+    "id": "",
+    "keyword": "Feature",
+    "name": "",
+    "description": "  AS a consumer of a pre paid card\n  I want to interact with transactions api\n  SO that I can see all my transactions",
+    "line": 1,
+    "elements": [
+      {
+        "id": ";api-allows-payments-and-withdraws-for-merchants",
+        "keyword": "Scenario",
+        "name": "Api allows payments and withdraws for merchants",
+        "description": "",
+        "line": 6,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I POST cards:",
+            "line": 7,
+            "rows": [
+              {
+                "cells": [
+                  "cardNumber",
+                  "cvv",
+                  "firstName",
+                  "lastName",
+                  "expireYear",
+                  "expireMonth"
+                ]
+              },
+              {
+                "cells": [
+                  "5595301793561145",
+                  "760",
+                  "Bob",
+                  "John",
+                  "2020",
+                  "2"
+                ]
+              },
+              {
+                "cells": [
+                  "5562045637601828",
+                  "260",
+                  "Gabe",
+                  "Newell",
+                  "2022",
+                  "4"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7800702
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST cards/deposit:",
+            "line": 11,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "10",
+                  "0"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "150",
+                  "1"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8049305
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST cards/deposit:",
+            "line": 15,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "2",
+                  "1000",
+                  "0"
+                ]
+              },
+              {
+                "cells": [
+                  "2",
+                  "20",
+                  "1"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13191197
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST merchants:",
+            "line": 19,
+            "rows": [
+              {
+                "cells": [
+                  "name"
+                ]
+              },
+              {
+                "cells": [
+                  "amazon"
+                ]
+              },
+              {
+                "cells": [
+                  "coffee"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6418550
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST payments:",
+            "line": 23,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce",
+                  "reason"
+                ]
+              },
+              {
+                "cells": [
+                  "2",
+                  "1",
+                  "10",
+                  "2",
+                  "Rubber duck"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5566520
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 26,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36295
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "I POST withdraws:",
+            "line": 27,
+            "rows": [
+              {
+                "cells": [
+                  "cardId",
+                  "merchantId",
+                  "amount",
+                  "nonce"
+                ]
+              },
+              {
+                "cells": [
+                  "2",
+                  "1",
+                  "10",
+                  "0"
+                ]
+              }
+            ],
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5456053
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I GET cards/2/transactions",
+            "line": 30,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13482754
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "response is a \"200\"",
+            "line": 31,
+            "match": {
+              "location": "features/step_definitions/pre_paid_card.rb:24"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31775
+            }
+          },
+          {
+            "keyword": "And ",
+            "name": "the JSON should be:",
+            "line": 32,
+            "doc_string": {
+              "value": "[\n  {\n    \"amount\": 1000.0,\n    \"cardId\": 2,\n    \"transactionId\": 3,\n    \"type\": \"DEPOSIT\"\n  },\n  {\n    \"amount\": 20.0,\n    \"cardId\": 2,\n    \"transactionId\": 4,\n    \"type\": \"DEPOSIT\"\n  },\n  {\n    \"amount\": 10.0,\n    \"cardId\": 2,\n    \"merchantId\": 1,\n    \"reason\": \"Rubber duck\",\n    \"transactionId\": 5,\n    \"type\": \"PAYMENT\"\n  }\n]",
+              "content_type": "",
+              "line": 33
+            },
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 140975
+            }
+          }
+        ],
+        "after": [
+          {
+            "match": {
+              "location": "features/support/env.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2380636
+            }
+          },
+          {
+            "match": {
+              "location": ".gems/ruby/2.3.0/gems/json_spec-1.1.5/lib/json_spec/cucumber.rb:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 12994
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
