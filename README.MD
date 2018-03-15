@@ -21,7 +21,16 @@ To ignore acceptanceTests
     $ ./gradlew build -x acceptanceTest
 ```
 
-Remote apis available under https://pre-paird-card-dev.eu-west-1.elasticbeanstalk.com/cards/1/balance
+### Remote api
+Remote apis available under https://pre-paird-card-dev.eu-west-1.elasticbeanstalk.com/cards/1/balance. It uses a self signed cert, so if you trust me then you can accept the security warning.
+
+### Running
+You can run the api locally by executing the below script:
+```bash
+    $ ./run.sh
+```
+
+This starts the api on `localhost:5000`.
 
 ### Endpoints example requests
 The api provides a few different endpoints:

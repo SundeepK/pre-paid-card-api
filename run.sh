@@ -2,12 +2,13 @@
 
 BASE_DIR="$( dirname "$0" )"
 
-tomcat_port=8080
+tomcat_port=5000
 active_profiles="prod"
 
 if [ "cucumber" = "$1" ]
 then
   active_profiles="cucumber"
+  tomcat_port=8080
 fi
 
 cd $BASE_DIR
